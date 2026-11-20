@@ -1,0 +1,181 @@
+# Panel de administración (Decap CMS): https://decapcms.org
+# Permite editar carta, precios, bebidas, galería y datos del restaurante sin tocar código.
+# Cada cambio se guarda como commit en GitHub y la web se vuelve a publicar automáticamente.
+backend:
+  name: github
+  repo: jfraurb/asador-la-casa      # cambiar si el repositorio se renombra
+  branch: main
+  base_url: https://REEMPLAZAR-oauth-proxy.example.com   # proxy OAuth (ver docs/ADMINISTRACION.md)
+
+locale: es
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+alergenos: &alergenos
+  - { label: "Gluten", value: "gluten" }
+  - { label: "Crustáceos", value: "crustaceos" }
+  - { label: "Huevos", value: "huevos" }
+  - { label: "Pescado", value: "pescado" }
+  - { label: "Cacahuetes", value: "cacahuetes" }
+  - { label: "Soja", value: "soja" }
+  - { label: "Lácteos", value: "lacteos" }
+  - { label: "Frutos de cáscara", value: "frutos-cascara" }
+  - { label: "Apio", value: "apio" }
+  - { label: "Mostaza", value: "mostaza" }
+  - { label: "Sésamo", value: "sesamo" }
+  - { label: "Sulfitos", value: "sulfitos" }
+  - { label: "Altramuces", value: "altramuces" }
+  - { label: "Moluscos", value: "moluscos" }
+
+collections:
+  - name: contenido
+    label: Contenido de la web
+    files:
+      - name: carta
+        label: Carta
+        file: content/carta.json
+        format: json
+        fields:
+          - { name: aprobadaPorRestaurante, label: "Carta revisada y aprobada por el restaurante", widget: boolean }
+          - { name: fuente, label: "Fuente (interno)", widget: string }
+          - { name: nota, label: "Nota al pie de la carta", widget: text }
+          - name: categorias
+            label: Categorías
+            widget: list
+            summary: "{{fields.nombre}}"
+            fields:
+              - { name: id, label: "Identificador (sin espacios ni tildes)", widget: string, pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"] }
+              - { name: nombre, label: Nombre, widget: string }
+              - { name: etiqueta, label: "Etiqueta (p. ej. Nº 01)", widget: string }
+              - { name: intro, label: Introducción, widget: string }
+              - name: platos
+                label: Platos
+                widget: list
+                summary: "{{fields.nombre}} · {{fields.precio}} €"
+                fields:
+                  - { name: id, label: "Identificador", widget: string, pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"] }
+                  - { name: nombre, label: Nombre, widget: string }
+                  - { name: precio, label: "Precio (€)", widget: number, value_type: float, min: 0, step: 0.05 }
+                  - { name: descripcion, label: Descripción, widget: text }
+                  - { name: imagen, label: "Fotografía real del plato (opcional)", widget: image, required: false, default: "" }
+                  - { name: imagenAlt, label: "Texto alternativo de la foto", widget: string, required: false }
+                  - { name: alergenos, label: Alérgenos, widget: select, multiple: true, required: false, default: [], options: *alergenos }
+                  - { name: alergenosConfirmados, label: "Alérgenos confirmados por cocina", widget: boolean, default: false }
+                  - { name: destacado, label: "Mostrar en Platos destacados", widget: boolean, default: false }
+
+      - name: bebidas
+        label: Vinos y bebidas
+        file: content/bebidas.json
+        format: json
+        fields:
+          - { name: publicada, label: "Mostrar las referencias en la web", widget: boolean }
+          - { name: nota, label: "Mensaje mientras no haya carta de bebidas", widget: text }
+          - name: categorias
+            label: Categorías
+            widget: list
+            summary: "{{fields.nombre}}"
+            fields:
+              - { name: id, label: Identificador, widget: string }
+              - { name: nombre, label: Nombre, widget: string }
+              - { name: etiqueta, label: Etiqueta, widget: string }
+              - { name: intro, label: Introducción, widget: string }
+              - name: referencias
+                label: Referencias
+                widget: list
+                required: false
+                summary: "{{fields.nombre}}"
+                fields:
+                  - { name: nombre, label: "Nombre del vino o bebida", widget: string }
+                  - { name: origen, label: "Bodega / D.O. / origen", widget: string, required: false }
+                  - { name: descripcion, label: Descripción, widget: string, required: false }
+                  - { name: precioCopa, label: "Precio copa (€)", widget: number, value_type: float, required: false }
+                  - { name: precioBotella, label: "Precio botella (€)", widget: number, value_type: float, required: false }
+                  - { name: precio, label: "Precio único (€) — refrescos, cervezas…", widget: number, value_type: float, required: false }
+
+      - name: galeria
+        label: Galería
+        file: content/galeria.json
+        format: json
+        fields:
+          - { name: categorias, label: Categorías, widget: list }
+          - name: fotos
+            label: "Fotografías (solo fotos reales del restaurante)"
+            widget: list
+            summary: "{{fields.categoria}} · {{fields.alt}}"
+            fields:
+              - { name: src, label: Imagen, widget: image }
+              - { name: alt, label: "Texto alternativo (describe la foto)", widget: string }
+              - { name: categoria, label: Categoría, widget: select, options: ["Platos", "Tapas", "Especialidades", "Vinos", "Interior", "Ambiente"] }
+              - { name: ancho, label: "Ancho en píxeles", widget: number, value_type: int }
+              - { name: alto, label: "Alto en píxeles", widget: number, value_type: int }
+              - { name: pie, label: "Pie de foto", widget: string, required: false }
+
+      - name: imagenes
+        label: Imágenes principales
+        file: content/imagenes.json
+        format: json
+        fields:
+          - { name: hero, label: "Portada (composición de tapas, ibéricos y bebidas)", widget: image, required: false, default: "" }
+          - { name: esencia, label: "Interior del restaurante", widget: image, required: false, default: "" }
+          - { name: bodega, label: "Copas, botellas y servicio", widget: image, required: false, default: "" }
+          - { name: ubicacion, label: "Fachada", widget: image, required: false, default: "" }
+
+      - name: restaurante
+        label: Datos del restaurante
+        file: content/restaurante.json
+        format: json
+        fields:
+          - { name: nombre, label: Nombre, widget: string }
+          - { name: actividad, label: Actividad, widget: string }
+          - { name: cocina, label: Cocina, widget: string }
+          - name: direccion
+            label: Dirección
+            widget: object
+            fields:
+              - { name: calle, label: Calle, widget: string }
+              - { name: codigoPostal, label: "Código postal", widget: string }
+              - { name: ciudad, label: Ciudad, widget: string }
+              - { name: provincia, label: Provincia, widget: string }
+              - { name: pais, label: País, widget: string }
+              - { name: barrio, label: Barrio, widget: string }
+          - name: telefono
+            label: Teléfono
+            widget: object
+            fields:
+              - { name: visible, label: "Como se muestra", widget: string }
+              - { name: e164, label: "Formato internacional (+34…)", widget: string }
+          - { name: precioMedio, label: "Precio medio (€)", widget: number }
+          - name: reservas
+            label: Reservas
+            widget: object
+            fields:
+              - { name: proveedor, label: Proveedor, widget: string }
+              - { name: url, label: "Enlace a TheFork", widget: string }
+              - { name: widgetAutorizado, label: "Widget de TheFork autorizado", widget: boolean }
+              - { name: widgetUrl, label: "URL del widget de TheFork (TheFork Manager)", widget: string, required: false }
+          - name: valoracion
+            label: Valoración
+            widget: object
+            fields:
+              - { name: nota, label: Nota, widget: number, value_type: float }
+              - { name: maximo, label: Máximo, widget: number }
+              - { name: resenas, label: "Número de reseñas", widget: number }
+              - { name: fuente, label: "Fuente (p. ej. TheFork, Google)", widget: string }
+              - { name: verificada, label: "Verificada hoy (si no, NO se muestra)", widget: boolean }
+              - { name: fechaVerificacion, label: "Fecha de verificación", widget: datetime, required: false, time_format: false }
+          - { name: email, label: "Correo electrónico (dejar vacío si no está confirmado)", widget: string, required: false }
+          - name: horario
+            label: "Horario (dejar vacío si no está confirmado)"
+            widget: list
+            required: false
+            fields:
+              - { name: dia, label: "Día(s)", widget: string }
+              - { name: horas, label: "Horas (p. ej. 13:00–16:30 · 20:00–23:30, o Cerrado)", widget: string }
+          - name: redes
+            label: "Redes sociales oficiales"
+            widget: list
+            required: false
+            fields:
+              - { name: nombre, label: "Red (Instagram, Facebook…)", widget: string }
+              - { name: url, label: URL, widget: string }
+          - { name: notaHorario, label: "Texto si no hay horario", widget: string }

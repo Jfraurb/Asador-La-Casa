@@ -1,0 +1,36 @@
+{
+  "nombre": "La Botica de Ale",
+  "actividad": "Restaurante",
+  "cocina": "Mediterránea",
+  "direccion": {
+    "calle": "Calle Tomás Echeverría, 3",
+    "codigoPostal": "29002",
+    "ciudad": "Málaga",
+    "provincia": "Málaga",
+    "pais": "España",
+    "barrio": "Huelin"
+  },
+  "telefono": {
+    "visible": "682 11 13 99",
+    "e164": "+34682111399"
+  },
+  "precioMedio": 18,
+  "reservas": {
+    "proveedor": "TheFork",
+    "url": "https://www.thefork.es/restaurante/la-botica-de-ale-r871554",
+    "widgetAutorizado": false,
+    "widgetUrl": ""
+  },
+  "valoracion": {
+    "nota": 4.8,
+    "maximo": 5,
+    "resenas": 104,
+    "fuente": "ficha empresarial",
+    "verificada": false,
+    "fechaVerificacion": ""
+  },
+  "email": "",
+  "horario": [],
+  "redes": [],
+  "notaHorario": "Horario pendiente de confirmación. Consulta la disponibilidad en TheFork o llámanos."
+}

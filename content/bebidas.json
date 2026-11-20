@@ -1,0 +1,11 @@
+{
+  "publicada": false,
+  "nota": "Estamos preparando nuestra carta de vinos y bebidas. Pregunta a nuestro equipo por las referencias disponibles.",
+  "categorias": [
+    { "id": "tintos", "nombre": "Vinos tintos", "etiqueta": "Bodega · I", "intro": "Para acompañar ibéricos, guisos y platos de cuchara.", "referencias": [] },
+    { "id": "blancos", "nombre": "Vinos blancos", "etiqueta": "Bodega · II", "intro": "Frescos, para el aperitivo, el pescado y la tarde.", "referencias": [] },
+    { "id": "rosados", "nombre": "Vinos rosados", "etiqueta": "Bodega · III", "intro": "Un punto intermedio para compartir.", "referencias": [] },
+    { "id": "espumosos", "nombre": "Espumosos", "etiqueta": "Bodega · IV", "intro": "Para brindar por los buenos momentos.", "referencias": [] },
+    { "id": "otras-bebidas", "nombre": "Otras bebidas", "etiqueta": "Bodega · V", "intro": "Cervezas, refrescos y demás.", "referencias": [] }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "aprobadaPorRestaurante": false,
+  "fuente": "Carta publicada en TheFork (consultada para la primera versión de la web)",
+  "nota": "Carta orientativa. Precios y disponibilidad sujetos a cambios: consulta con nuestro equipo.",
+  "categorias": [
+    {
+      "id": "tapas-y-entrantes",
+      "nombre": "Tapas y entrantes",
+      "etiqueta": "Nº 01",
+      "intro": "Para abrir boca y compartir al centro de la mesa.",
+      "platos": [
+        { "id": "gilda-anchoa-piparra", "nombre": "Gilda de anchoa y piparra", "precio": 1.8, "descripcion": "El bocado clásico del aperitivo, en su versión de anchoa y piparra.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": false },
+        { "id": "gilda-atun-cebolla-aceituna", "nombre": "Gilda de atún, cebolla y aceituna", "precio": 2, "descripcion": "Nuestra gilda de atún con cebolla y aceituna.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": false },
+        { "id": "gazpacho", "nombre": "Gazpacho", "precio": 3, "descripcion": "Un imprescindible de la cocina andaluza.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": false },
+        { "id": "ajoblanco", "nombre": "Ajoblanco", "precio": 3, "descripcion": "Receta tradicional malagueña, servida fría.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": true },
+        { "id": "tortilla-de-patatas", "nombre": "Tortilla de patatas", "precio": 3, "descripcion": "La tapa que nunca falla.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": false },
+        { "id": "boquerones-en-vinagre", "nombre": "Boquerones en vinagre", "precio": 3, "descripcion": "Un clásico de las barras de Málaga.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": true },
+        { "id": "albondigas-salsa-almendras", "nombre": "Albóndigas en salsa de almendras", "precio": 4, "descripcion": "Albóndigas guisadas en salsa de almendras.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": false }
+      ]
+    },
+    {
+      "id": "ibericos-y-quesos",
+      "nombre": "Ibéricos y quesos",
+      "etiqueta": "Nº 02",
+      "intro": "Producto para picar sin prisa.",
+      "platos": [
+        { "id": "chicharron-de-cadiz", "nombre": "Chicharrón de Cádiz", "precio": 8, "descripcion": "Un clásico gaditano para compartir.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": false },
+        { "id": "cabezal-mechado", "nombre": "Cabezal mechado", "precio": 8, "descripcion": "Ración de cabezal mechado.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": false },
+        { "id": "queso-de-oveja", "nombre": "Queso de oveja", "precio": 8.5, "descripcion": "Ración de queso de oveja.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": false }
+      ]
+    },
+    {
+      "id": "platos-y-especialidades",
+      "nombre": "Platos y especialidades",
+      "etiqueta": "Nº 03",
+      "intro": "Las fórmulas de la casa, pensadas para el centro de la mesa.",
+      "platos": [
+        { "id": "gambas-al-pilpil", "nombre": "Gambas al pilpil", "precio": 8, "descripcion": "Un clásico para mojar pan.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": true },
+        { "id": "alcachofas-a-la-montillana", "nombre": "Alcachofas a la montillana", "precio": 9, "descripcion": "Alcachofas en la receta tradicional cordobesa.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": false },
+        { "id": "flamenquin-la-botica", "nombre": "Flamenquín La Botica", "precio": 9.5, "descripcion": "El flamenquín con el nombre de la casa.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": true },
+        { "id": "pastel-de-cabracho", "nombre": "Pastel de cabracho", "precio": 12, "descripcion": "Un clásico de la cocina española.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": false },
+        { "id": "habitas-jamon-foie", "nombre": "Habitas con jamón y foie", "precio": 15, "descripcion": "Habitas con jamón y foie.", "imagen": "", "alergenos": [], "alergenosConfirmados": false, "destacado": true }
+      ]
+    }
+  ]
+}
